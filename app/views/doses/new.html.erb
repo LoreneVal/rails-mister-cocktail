@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 offset-sm-4">
+      <h1>Add an ingredient</h1>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.association :ingredient, collection: @ingredients, input_html: { class:'select2' } %>
+        <%= f.input :description %>
+
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to "Cancel", cocktails_path %>
+    </div>
+  </div>
+</div>
