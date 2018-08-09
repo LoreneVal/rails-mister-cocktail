@@ -5,6 +5,8 @@
       <%= simple_form_for(@cocktail) do |f| %><h1>Create a cocktail</h1>
 
         <%= f.input :name %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
         <%= f.submit class: 'btn btn-primary' %>
       <% end %>
 
