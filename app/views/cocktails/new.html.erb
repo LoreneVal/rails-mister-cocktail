@@ -1,15 +1,16 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4 offset-sm-4">
+<div class="cocktail-wrapper">
+    <div class="cocktail-image">
+      <%= image_tag 'cocktails.jpg', height: 500, width: 500, crop: :fill %>
+    </div>
+  <div class="new-cocktail-container">
+    <div class="form-cocktail">
+        <%= simple_form_for(@cocktail) do |f| %><h1>Create a cocktail</h1>
 
-      <%= simple_form_for(@cocktail) do |f| %><h1>Create a cocktail</h1>
-
-        <%= f.input :name %>
-        <%= f.input :photo %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-
+          <%= f.input :name %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.submit class: 'btn-link' %>
+        <% end %>
     </div>
   </div>
 </div>

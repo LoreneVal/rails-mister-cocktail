@@ -1,5 +1,11 @@
 <div class="container">
   <h1>Find your perfect drink</h1>
+  <div class="search-form">
+    <%= form_tag(cocktails_path, method: :get) do %>
+      <%= text_field_tag :term, params[:term] %>
+      <%= submit_tag 'Search', name: nil %>
+    <% end %>
+  </div>
   <div class="row">
   <% @cocktails.each do |cocktail| %>
     <div class="col-xs-12 col-sm-4">

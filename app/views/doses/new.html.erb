@@ -1,14 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4 offset-sm-4">
-      <h1>Add an ingredient</h1>
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
-        <%= f.association :ingredient, collection: @ingredients, input_html: { class:'select2' } %>
-        <%= f.input :description %>
-
-        <%= f.submit class: 'btn btn-primary' %>
+<div class="new-dose-wrapper">
+  <div class="new-cocktail-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)),
+           url('<%= cl_image_path @cocktail.photo,
+      width: 500, height: 500, crop: :fill %>')">
+    <h1><%= @cocktail.name %></h1>
+    <div class="cocktail-ingredients">
+      <% @cocktail.doses.each do |dose| %>
+          <p><%= dose.ingredient.name %>: <%= dose.description %></p>
       <% end %>
-      <%= link_to "Cancel", cocktails_path %>
     </div>
+  </div>
+
+  <div class="new-dose-container">
+    <div class="form-cocktail">
+
+        <h1>Add an ingredient</h1>
+        <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <%= f.association :ingredient, collection: @ingredients, input_html: { class:'select2' } %>
+          <%= f.input :description %>
+        <div class="buttons">
+          <%= f.submit "Add ingredient", class: 'btn-link', id: 'btn-add-ingredient' %>  <%= link_to "Cancel", cocktails_path, class: 'btn-link' %>
+          <% end %>
+        </div>
+        <div class="finish">
+          <%= link_to "Finish", cocktail_path(@cocktail), id: 'finish-cocktail', class: "finish-cocktail" %>
+        </div>
   </div>
 </div>
